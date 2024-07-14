@@ -3,7 +3,7 @@ import { SendEmail } from './tdo/SendEmail-tdo';
 import { Subscribe } from './subscribe';
 
 @Injectable()
-export class UserService {
+export class EmailService {
   
   constructor(private readonly subscribe: Subscribe){}
 
