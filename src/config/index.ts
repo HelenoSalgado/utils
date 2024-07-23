@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 // util email send
 export const email = {
     host: process.env.HOST_EMAIL,

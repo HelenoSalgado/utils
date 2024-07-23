@@ -1,7 +1,5 @@
 import { email } from "src/config";
 import { SendEmail } from "../tdo/SendEmail-tdo";
-import { fsyncSync } from "fs";
-import { dirname } from "path/posix";
 const nodemailer = require('nodemailer');
 
 export class Subscribe{
@@ -18,16 +16,16 @@ export class Subscribe{
         }
 
         const envelope = {
-            from: `"Heleno Salgado" <${email.auth.user}>`,
-            to: `"${contact.name}" <${contact.email}>`,
+            from: `"Heleno Salgado" < ${email.auth.user} >`,
+            to: `"${contact.name}" < ${contact.email} >`,
             subject: "Contato - Portfólio",
             html: `<body>
                     <h3>Por <em>${contact.name}</em></h3>
                     <p>${contact.text}</p>
                     <hr>
-                    <em>Essa é uma cópia gerada automáticamente. Responderei o mais rápido possível.</em>
+                    <em>Cópia gerada automáticamente.</em>
                     <br>
-                    <p><a href="https://heleno.dev">heleno.dev<a/>.</p>
+                    <p><a href="https://heleno.dev">heleno.dev<a/></p>
                    </body>`,
         };
 
