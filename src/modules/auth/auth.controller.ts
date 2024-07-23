@@ -21,12 +21,12 @@ export class AuthController {
   }
 
   @Public()
-  
   @Post()
   async signIn(@Req() req: Request, @Body() signInDto: SignInDto) {
     return await this.authService.signIn(signInDto, req);
   }
-
+  
+  @Public()
   @Post('/hash')
   async hash(@Body() hashDto: HashDto) {
     console.log(hashDto)
