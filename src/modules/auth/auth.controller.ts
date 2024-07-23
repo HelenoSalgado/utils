@@ -2,8 +2,6 @@ import {
     Body,
     Controller, 
     Get,
-    HttpCode,
-    HttpStatus,
     Post,
     Req
   } from '@nestjs/common';
@@ -16,10 +14,14 @@ import { Request } from 'express';
 export class AuthController {
 
   constructor(private authService: AuthService) {}
-  
+
+  @Get('/verify')
+  async signInVerify(@Req() req: Request) {
+    return await this.authService.signInVerify(req.headers.authorization);
+  }
+
   @Public()
-  @HttpCode(HttpStatus.OK)
-    
+  
   @Post()
   async signIn(@Req() req: Request, @Body() signInDto: SignInDto) {
     return await this.authService.signIn(signInDto, req);
@@ -27,12 +29,8 @@ export class AuthController {
 
   @Post('/hash')
   async hash(@Body() hashDto: HashDto) {
+    console.log(hashDto)
     return await this.authService.hash(hashDto);
-  }
-
-  @Get('/verify')
-  async signInVerify(@Req() req: Request) {
-    return await this.authService.signInVerify(req.headers.authorization);
   }
 
 }
