@@ -19,7 +19,7 @@ async function bootstrap() {
 
   await app.listen(3001).then(async()=> { 
     console.log(await app.getUrl()) ;
-    console.log(app.flushLogs());
+    console.log('Allow Origins: '+ allowOrigins);
   });
 }
 bootstrap();
