@@ -1,5 +1,9 @@
 import 'dotenv/config';
 
+// Allow origins
+// util auth
+export const allowOrigins = process.env.ALLOW_ORIGINS;
+
 // util email send
 export const email = {
     host: process.env.HOST_EMAIL,
