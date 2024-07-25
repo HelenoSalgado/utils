@@ -8,10 +8,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: (e) => {
-      if(!allowOrigins.includes(e)){
-        throw new ForbiddenException('Origem não permitida');
-      }
+    origin: (origin) => {
+      console.log(origin);
+      if(!allowOrigins.includes(origin)) throw new ForbiddenException('Origem não permitida');
     },
     methods: ['POST', 'GET'],
     credentials: true,
