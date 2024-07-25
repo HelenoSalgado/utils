@@ -4,9 +4,9 @@ import { AppModule } from './app.module';
 
 const options = {
   origin: [
-    'https://heleno.dev', 
-    'http://localhost:3000', 
-    'https://amei.helenosalgado19.workers.dev'
+    'https://heleno.dev/', 
+    'http://localhost:3000/', 
+    'https://amei.helenosalgado19.workers.dev/'
   ],
   methods: "POST",
   credentials: true,
