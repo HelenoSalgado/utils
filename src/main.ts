@@ -1,16 +1,21 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { ForbiddenException, ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { allowOrigins } from './config';
+import { nextTick } from 'process';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: allowOrigins,
+    origin: (e) => {
+      if(!allowOrigins.includes(e)){
+        throw new ForbiddenException('Origem não permitida');
+      }
+    },
     methods: ['POST', 'GET'],
     credentials: true,
-    optionsSuccessStatus: 200,
+    optionsSuccessStatus: 200
   });
 
   // Remoção automática de propriedades sem decoradores - DTO
