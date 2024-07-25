@@ -17,8 +17,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    allowedHeaders: ['https://heleno.dev', 'http://localhost:3000', 'https://amei.helenosalgado19.workers.dev'],
-    origin: ['X-Requested-With', 'Content-Type', 'Accept'],
+    allowedHeaders: ['X-Requested-With', 'Content-Type', 'Accept'],
+    origin: ['https://heleno.dev', 'http://localhost:3000', 'https://amei.helenosalgado19.workers.dev'],
     methods: ['POST', 'GET'],
     credentials: true,
     optionsSuccessStatus: 200,
